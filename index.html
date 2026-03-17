@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roberto - Pulizie Domestiche</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #25d366;
+            --secondary: #007bff;
+            --dark: #333;
+            --light: #f4f4f9;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; background: var(--light); color: var(--dark); }
+        .container { max-width: 600px; margin: 20px auto; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: var(--secondary); margin-bottom: 5px; }
+        .subtitle { font-style: italic; color: #666; margin-bottom: 20px; }
+        .info-box { background: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid var(--secondary); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        button { border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; color: white; transition: 0.3s; }
+        .btn-wa { background: var(--primary); }
+        .btn-mail { background: var(--secondary); }
+        .btn-cancel { background: #dc3545; width: 100%; margin-top: 10px; }
+        .voucher-box { border: 2px dashed #ff9800; padding: 15px; text-align: center; margin-top: 30px; border-radius: 10px; background: #fff3e0; }
+        .voucher-btn { background: #ff9800; color: white; padding: 10px 20px; text-decoration: none; display: inline-block; border-radius: 5px; margin-top: 10px; font-weight: bold; }
+        .footer { text-align: center; font-size: 0.9em; color: #888; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Roberto — Pulizie Domestiche</h1>
+    <p class="subtitle">Servizio professionale, preciso e accurato in Brianza, Como e Milano.</p>
+
+    <div class="info-box">
+        <i class="fas fa-info-circle"></i> Disponibile <b>Sabato e Domenica</b>.<br>
+        <i class="fas fa-train"></i> A Milano mi sposto comodamente in treno.<br>
+        <i class="fas fa-tag"></i> Tariffa a partire da <b>5€/ora</b> (concordabile).
+    </div>
+
+    <form id="bookingForm">
+        <div class="form-group">
+            <label>Nome e Cognome *</label>
+            <input type="text" id="nome" required placeholder="Es: Mario Rossi">
+        </div>
+
+        <div class="form-group">
+            <label>Data *</label>
+            <input type="date" id="data" required>
+        </div>
+
+        <div class="form-group">
+            <label>Zona *</label>
+            <select id="zona" required>
+                <option value="">-- Scegli zona --</option>
+                <option value="Brianza">Brianza</option>
+                <option value="Como">Como</option>
+                <option value="Milano">Milano</option>
+                <option value="Altra">Altra zona</option>
+            </select>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <div class="form-group" style="flex: 1;">
+                <label>Inizio</label>
+                <input type="time" id="inizio">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label>Fine (stima)</label>
+                <input type="time" id="fine">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Tuo contatto (Tel/Email) *</label>
+            <input type="text" id="contatto" required placeholder="Dove posso ricontattarti?">
+        </div>
+
+        <div class="form-group">
+            <label>Note aggiuntive</label>
+            <textarea id="note" rows="2" placeholder="Specifiche sul lavoro..."></textarea>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn-wa" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Prenota WhatsApp</button>
+            <button type="button" class="btn-mail" onclick="sendEmail()"><i class="fas fa-envelope"></i> Prenota Email</button>
+        </div>
+    </form>
+
+    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+    <h3>Hai bisogno di annullare?</h3>
+    <p>Contattami subito per liberare il posto:</p>
+    <button class="btn-cancel" onclick="annullaAppuntmanento()"><i class="fas fa-times"></i> Annulla via WhatsApp</button>
+
+    <div class="voucher-box">
+        <h3>🎁 Regalo di Benvenuto</h3>
+        <p>Scarica il voucher per <b>1 ORA GRATIS</b> di prova senza impegno!</p>
+        <a href="#" class="voucher-btn" onclick="scaricaVoucher()"><i class="fas fa-download"></i> Scarica Buono Omaggio</a>
+    </div>
+
+    <div class="footer">
+        © 2024 Roberto Pulizie · Tel: 3473055057
+    </div>
+</div>
+
+<script>
+    const MY_PHONE = "393473055057";
+    const MY_EMAIL = "pontiggiaroberto@gmail.com";
+
+    function getFormData() {
+        return {
+            nome: document.getElementById('nome').value,
+            data: document.getElementById('data').value,
+            zona: document.getElementById('zona').value,
+            inizio: document.getElementById('inizio').value,
+            fine: document.getElementById('fine').value,
+            contatto: document.getElementById('contatto').value,
+            note: document.getElementById('note').value
+        };
+    }
+
+    function sendWhatsApp() {
+        const d = getFormData();
+        if(!d.nome || !d.data || !d.zona) { alert("Compila i campi obbligatori!"); return; }
+        
+        const msg = `Ciao Roberto, vorrei prenotare una pulizia:%0A- Nome: ${d.nome}%0A- Data: ${d.data}%0A- Zona: ${d.zona}%0A- Orario: ${d.inizio} - ${d.fine}%0A- Note: ${d.note}%0A%0AContattami qui: ${d.contatto}`;
+        window.open(`https://wa.me/${MY_PHONE}?text=${msg}`, '_blank');
+    }
+
+    function sendEmail() {
+        const d = getFormData();
+        if(!d.nome || !d.data || !d.zona) { alert("Compila i campi obbligatori!"); return; }
+
+        const subject = `Prenotazione Pulizie - ${d.nome}`;
+        const body = `Dati prenotazione:\nNome: ${d.nome}\nData: ${d.data}\nZona: ${d.zona}\nOrario: ${d.inizio}-${d.fine}\nNote: ${d.note}\n\nContatto: ${d.contatto}`;
+        window.location.href = `mailto:${MY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    function annullaAppuntmanento() {
+        const msg = "Ciao Roberto, vorrei annullare o spostare l'appuntamento concordato.";
+        window.open(`https://wa.me/${MY_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function scaricaVoucher() {
+        alert("Voucher riscattato! Salva questa schermata o comunica a Roberto il codice: PROVA-GRATIS-ROB");
+        // Qui si potrebbe generare un PDF, ma un alert con codice è più semplice per iniziare.
+    }
+</script>
+
+</body>
+</html>
