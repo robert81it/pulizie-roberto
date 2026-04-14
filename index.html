@@ -4,73 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roberto — Pulizie Domestiche</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Calendly CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
     <style>
         :root { --primary: #25d366; --secondary: #007bff; --dark: #333; --light: #f4f4f9; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; background: var(--light); color: var(--dark); }
-        .container { max-width: 650px; margin: 20px auto; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
-        h1 { color: var(--secondary); margin-bottom: 5px; }
-        .subtitle { font-style: italic; color: #666; margin-bottom: 20px; }
-        .info-box { background: #e7f3ff; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid var(--secondary); text-align: left; }
-        
-        .btn-booking { background: var(--secondary); color: white; padding: 20px; border-radius: 10px; display: block; text-decoration: none; font-size: 1.2em; font-weight: bold; margin: 25px 0; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,123,255,0.3); }
-        .btn-booking:hover { transform: scale(1.03); background: #0056b3; }
-        
-        .calendar-container {
-            width: 100%;
-            height: 500px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 { color: var(--secondary); }
+        .subtitle { color: #666; }
+
+        .info-box {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid var(--secondary);
+            text-align: left;
+        }
+
+        .calendar-box {
+            margin-top: 30px;
+        }
+
+        .btn-wa {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+            max-width: 300px;
             margin-top: 20px;
+            font-weight: bold;
         }
-        .calendar-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+
+        .footer {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
-        
-        .btn-wa { background: var(--primary); color: white; padding: 12px; border-radius: 5px; text-decoration: none; display: inline-block; width: 90%; max-width: 300px; margin-top: 10px; font-weight: bold; }
-        .voucher-box { border: 2px dashed #ff9800; padding: 15px; text-align: center; margin-top: 30px; border-radius: 10px; background: #fff3e0; }
-        .footer { font-size: 0.85em; color: #888; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
     </style>
 </head>
+
 <body>
 
 <div class="container">
     <h1>Roberto — Pulizie Domestiche</h1>
-    <p class="subtitle">Servizio professionale in Brianza, Como e Milano.</p>
+    <p class="subtitle">Servizio professionale in Brianza, Como e Milano</p>
 
     <div class="info-box">
-        <i class="fas fa-calendar-check"></i> Disponibile <b>Sabato e Domenica</b>.<br>
-        <i class="fas fa-clock"></i> Formato orario: <b>24 ore</b>.<br>
-        <i class="fas fa-tag"></i> Tariffa a partire da 5€/ora.
+        <i class="fas fa-calendar-check"></i> Disponibile <b>Sabato e Domenica</b><br>
+        <i class="fas fa-clock"></i> Prenotazione immediata online<br>
+        <i class="fas fa-star"></i> Facile, veloce e sicuro
     </div>
 
-    <a href="https://calendar.app.google/MTMDPUNnLaAPjnMW6" target="_blank" class="btn-booking">
-        <i class="fas fa-calendar-plus"></i> CLICCA QUI PER PRENOTARE
+    <h2>📅 Prenota il tuo servizio</h2>
+    <p>Scegli direttamente un orario disponibile 👇</p>
+
+    <!-- Calendly inline widget -->
+    <div class="calendar-box">
+        <div class="calendly-inline-widget" 
+             data-url="https://calendly.com/pontiggiaroberto/pulizia-casa" 
+             style="min-width:320px;height:700px;">
+        </div>
+    </div>
+
+    <h3>Contatto rapido</h3>
+    <a href="https://wa.me/393473055057" class="btn-wa">
+        <i class="fab fa-whatsapp"></i> Scrivimi su WhatsApp
     </a>
-    <p><small>(Dopo la prenotazione, chiudi la scheda per tornare qui)</small></p>
-
-    <h3>La mia agenda aggiornata:</h3>
-    <div class="calendar-container">
-        <iframe src="https://calendar.google.com/calendar/embed?src=2e736c5f33b34a4a73397c5f77c45acce8db5ff0c2ecd06df9111e4343537017%40group.calendar.google.com&ctz=Europe%2FRome&mode=WEEK&hl=it&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0" scrolling="no"></iframe>
-    </div>
-
-    <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
-
-    <h3>Contatto Rapido / WhatsApp</h3>
-    <a href="https://wa.me/393473055057" class="btn-wa"><i class="fab fa-whatsapp"></i> Scrivimi su WhatsApp</a>
-
-    <div class="voucher-box">
-        <h3>🎁 Buono 1 Ora Gratis</h3>
-        <p>Codice: <b>PROVA-GRATIS-ROB</b></p>
-    </div>
 
     <div class="footer">
         © 2026 Roberto Pulizie · Tel: 3473055057
     </div>
 </div>
+
+<!-- Calendly script -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 </body>
 </html>
