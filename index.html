@@ -3,68 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roberto — Pulizie Domestiche</title>
+    <title>Prenota Pulizie - Roberto</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Calendly CSS -->
+    <!-- Calendly -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 
     <style>
-        :root { --primary: #25d366; --secondary: #007bff; --dark: #333; --light: #f4f4f9; }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
             margin: 0;
-            background: var(--light);
-            color: var(--dark);
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 20px auto;
-            background: #fff;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
         }
 
-        h1 { color: var(--secondary); }
-        .subtitle { color: #666; }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
 
-        .info-box {
-            background: #e7f3ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 5px solid var(--secondary);
+        h1 {
+            color: #007bff;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .steps {
             text-align: left;
+            margin: 20px 0;
         }
 
-        .calendar-box {
-            margin-top: 30px;
+        .steps p {
+            margin: 10px 0;
+            font-size: 1.1em;
         }
 
-        .btn-wa {
-            background: var(--primary);
+        .btn-book {
+            background: #007bff;
+            color: white;
+            padding: 18px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            margin: 25px 0;
+            transition: 0.3s;
+        }
+
+        .btn-book:hover {
+            background: #0056b3;
+            transform: scale(1.03);
+        }
+
+        .whatsapp {
+            background: #25d366;
             color: white;
             padding: 12px;
-            border-radius: 5px;
+            border-radius: 6px;
             text-decoration: none;
             display: inline-block;
-            width: 90%;
-            max-width: 300px;
-            margin-top: 20px;
-            font-weight: bold;
+            margin-top: 10px;
         }
 
         .footer {
+            margin-top: 30px;
             font-size: 0.85em;
             color: #888;
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
         }
     </style>
 </head>
@@ -72,38 +92,41 @@
 <body>
 
 <div class="container">
-    <h1>Roberto — Pulizie Domestiche</h1>
-    <p class="subtitle">Servizio professionale in Brianza, Como e Milano</p>
+    <h1>🧹 Pulizie Casa</h1>
+    <p class="subtitle">Disponibile Sabato e Domenica</p>
 
-    <div class="info-box">
-        <i class="fas fa-calendar-check"></i> Disponibile <b>Sabato e Domenica</b><br>
-        <i class="fas fa-clock"></i> Prenotazione immediata online<br>
-        <i class="fas fa-star"></i> Facile, veloce e sicuro
+    <p class="price">💰 A partire da 5€ / ora</p>
+
+    <div class="steps">
+        <p>1️⃣ Clicca su prenota</p>
+        <p>2️⃣ Scegli giorno e orario</p>
+        <p>3️⃣ Conferma in 30 secondi</p>
     </div>
 
-    <h2>📅 Prenota il tuo servizio</h2>
-    <p>Scegli direttamente un orario disponibile 👇</p>
+    <a href="#" onclick="openCalendly()" class="btn-book">
+        📅 PRENOTA ORA
+    </a>
 
-    <!-- Calendly inline widget -->
-    <div class="calendar-box">
-        <div class="calendly-inline-widget" 
-             data-url="https://calendly.com/pontiggiaroberto/pulizia-casa" 
-             style="min-width:320px;height:700px;">
-        </div>
-    </div>
+    <p><small>Mostra solo orari disponibili</small></p>
 
-    <h3>Contatto rapido</h3>
-    <a href="https://wa.me/393473055057" class="btn-wa">
-        <i class="fab fa-whatsapp"></i> Scrivimi su WhatsApp
+    <a href="https://wa.me/393473055057" class="whatsapp">
+        💬 Scrivimi su WhatsApp
     </a>
 
     <div class="footer">
-        © 2026 Roberto Pulizie · Tel: 3473055057
+        © Roberto Pulizie
     </div>
 </div>
 
-<!-- Calendly script -->
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script src="https://assets.calendly.com/assets/external/widget.js"></script>
+
+<script>
+function openCalendly() {
+    Calendly.initPopupWidget({
+        url: 'https://calendly.com/pontiggiaroberto/pulizia-casa'
+    });
+}
+</script>
 
 </body>
 </html>
